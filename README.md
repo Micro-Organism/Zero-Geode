@@ -49,6 +49,15 @@ docker pull apachegeode/geode
 docker run -it -p 10334:10334 -p 7575:7575 -p 40404:40404 -p 1099:1099  apachegeode/geode gfsh
 ```
 
+## 3.2. 镜像制作
+```dockerfile
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ADD gemfire-1.0-SNAPSHOT.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+```
+
 # 4. 其他
 
 # 5. 参考
